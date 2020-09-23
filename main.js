@@ -1,9 +1,14 @@
 
 const zooVocab = ["beautiful", "chirping", "brightly", "zoo", "numerous", "giraffes", "tigers", "lions", "penguins", "flamingos", "intriguing", "memorable"]
 const campVocab = ["thunderstorm","fresh","clear","travel","campsite","vehicle","assigned","firewood","campfire","barbeque","supper","pitched","respective"]
-const vocabulary = [zooVocab,campVocab]
-const stories = ["zooStory", "campStory"]
-const vocabularyString = ["zooVocab", "campVocab"]
+const poleVocab = ["competition","frightened","comfort","zone","attend","tournament","myriad","sculpted","greek","goddesses","starstruck","giddy","excitement","satisfied"]
+const catVocab = ["morning","grooming","startled","servants","nerve","breakfast","consuming","intake","regular","massage","forget","remind","long","reminder","swipe","claws","parents","kitty"]
+
+const vocabulary = [zooVocab,campVocab,poleVocab,catVocab]
+const stories = ["zooStory", "campStory","poleStory","catStory"]
+const vocabularyString = ["zooVocab", "campVocab","poleVocab","catVocab"]
+
+
 var counter = 5
 var vocabIndex = 0
 var storyIndex = 0
