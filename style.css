@@ -1,7 +1,6 @@
 p {
 	color: black;
 	font-size: 30px;
-	margin: 50px;
 }
 
 p.timer {
@@ -52,6 +51,14 @@ input.giveUp {
 	right: 450px;
 	position: fixed;
 	top: 500px;
+	height: 30px;
+}
+
+input.oops {
+	text-align: center;
+	width: 20%;
+	font-size: 15px;
+	background-color: #f44336;
 	height: 30px;
 }
 

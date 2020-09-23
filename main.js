@@ -12,6 +12,7 @@ var min = 0
 var t
 var timer_is_on = false
 var score = 100
+var mistakes = []
 
 
 window.onload = function() {
@@ -87,9 +88,16 @@ function refresh() {
 	counter = 5
 	vocabIndex = 0
 	score = 100
+	mistakes.length = 0
 	updateCount()
 	updateVocab()
 	resetTimer()
+	document.getElementById("giveUp").hidden = true
+	document.getElementById("restart").hidden = true
+	document.getElementById("myInput").hidden = false
+	document.getElementById("score").hidden = true
+	document.getElementById("oops").hidden = true
+	document.getElementById("mistakes").hidden = true
 }
 
 function Next() {
@@ -97,44 +105,46 @@ function Next() {
 	document.getElementById(stories[storyIndex]).hidden = false
 	document.getElementById(stories[storyIndex - 1]).hidden = true
 	document.getElementById("enter").hidden = true
-	document.getElementById("giveUp").hidden = true
-	document.getElementById("restart").hidden = true
-	document.getElementById("myInput").hidden = false
 	refresh()
 }
 
-function Restart() {
-	refresh()
-	document.getElementById("restart").hidden = true
-	document.getElementById("giveUp").hidden = true
-	document.getElementById("myInput").hidden = false
+function showScore() {
+	var finalscore = score - ((min*60) + sec - 1) - ((5-counter)*5)
+	document.getElementById("score").hidden = false
+	document.getElementById("score").innerHTML = `Your Score is: ${finalscore}!`
+}
+
+function showMistakes() {
+	document.getElementById("mistakes").hidden = false
+	document.getElementById("mistakes").innerHTML = `Your typos were: ${mistakes}`
 }
 
 function checkInputValue(inputElement) {
 	return function() {
 		startCount()
-		if (counter < 1) {
-			stopCount()
-			document.getElementById("myInput").hidden = true
-			document.getElementById("restart").hidden = false
-			document.getElementById("giveUp").hidden = false
-		}
 		let textInput = inputElement.value
-		if (!vocabulary[storyIndex][vocabIndex].startsWith(textInput)) {
+		if (!vocabulary[storyIndex][vocabIndex].startsWith(textInput) || textInput === " ") {
 			counter -= 1
 			updateCount()
-		} else if (textInput === vocabulary[storyIndex][vocabIndex]) {
+			mistakes.push(textInput)
+		}else if (textInput === vocabulary[storyIndex][vocabIndex]) {
 			unhide(String(vocabulary[storyIndex][vocabIndex]))
 			if (textInput === vocabulary[storyIndex][vocabulary[storyIndex].length - 1]) {
 				stopCount()
-				document.getElementById("myInput").hidden = true
-				document.getElementById("enter").hidden = false
-				var finalscore = score - ((min*60) + sec - 1) - ((5-counter)*5)
-				setTimeout(() => {alert("Your score is: "+ finalscore +". Press ok to close this popup. Click next story to continue.")}, 500)
+				document.getElementById("myInput").hidden = true 
+				document.getElementById("enter").hidden = false 
+				showScore()
+				document.getElementById("oops").hidden = false
 			} else {
 				vocabIndex += 1
 				updateVocab()
 			}
+		}
+		if (counter === 0) {
+			stopCount()
+			document.getElementById("myInput").hidden = true
+			document.getElementById("restart").hidden = false
+			document.getElementById("giveUp").hidden = false
 		}
 	}
 }
