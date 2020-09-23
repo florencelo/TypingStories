@@ -1,0 +1,61 @@
+p {
+	color: black;
+	font-size: 30px;
+	margin: 50px;
+}
+
+p.timer {
+	left: 10px; 
+	top: 500px
+}
+
+header {
+	text-align: center;
+	font-size: 50px;
+}
+
+input.typing {
+	text-align: center;
+	font-size: 40px;
+	border-width: 5px;
+	border-radius: 10px;
+	width: 50%;
+	position: fixed;
+	right: 310px;
+}
+
+input.enter {
+	text-align: center;
+	width: 10%;
+	font-size: 20px;
+	right: 580px;
+	position: fixed;
+	top: 500px;
+	height: 30px;
+}
+
+
+input.restart {
+	text-align: center;
+	width: 10%;
+	font-size: 20px;
+	right: 700px;
+	position: fixed;
+	top: 500px;
+	height: 30px;
+}
+
+input.giveUp {
+	text-align: center;
+	width: 10%;
+	font-size: 20px;
+	right: 450px;
+	position: fixed;
+	top: 500px;
+	height: 30px;
+}
+
+span.word {
+	color: blue;
+	text-decoration: underline;
+}
