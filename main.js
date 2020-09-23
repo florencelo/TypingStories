@@ -11,6 +11,7 @@ var sec = 0
 var min = 0
 var t
 var timer_is_on = false
+var score = 100
 
 
 window.onload = function() {
@@ -85,6 +86,7 @@ function refresh() {
 	hide(vocabulary[storyIndex])
 	counter = 5
 	vocabIndex = 0
+	score = 100
 	updateCount()
 	updateVocab()
 	resetTimer()
@@ -111,22 +113,24 @@ function Restart() {
 function checkInputValue(inputElement) {
 	return function() {
 		startCount()
-		if (counter < 2) {
+		if (counter < 1) {
 			stopCount()
 			document.getElementById("myInput").hidden = true
 			document.getElementById("restart").hidden = false
 			document.getElementById("giveUp").hidden = false
 		}
-		if (!vocabulary[storyIndex][vocabIndex].startsWith(inputElement.value)) {
+		let textInput = inputElement.value
+		if (!vocabulary[storyIndex][vocabIndex].startsWith(textInput)) {
 			counter -= 1
 			updateCount()
-		} else if (inputElement.value === vocabulary[storyIndex][vocabIndex]) {
+		} else if (textInput === vocabulary[storyIndex][vocabIndex]) {
 			unhide(String(vocabulary[storyIndex][vocabIndex]))
-			if (inputElement.value === vocabulary[storyIndex][vocabulary[storyIndex].length - 1]) {
+			if (textInput === vocabulary[storyIndex][vocabulary[storyIndex].length - 1]) {
 				stopCount()
-				alert("Your score is: "+ min +" minutes "+ sec +" seconds. Press ok to close this popup. Click next story to continue.")
 				document.getElementById("myInput").hidden = true
 				document.getElementById("enter").hidden = false
+				var finalscore = score - ((min*60) + sec - 1) - ((5-counter)*5)
+				setTimeout(() => {alert("Your score is: "+ finalscore +". Press ok to close this popup. Click next story to continue.")}, 500)
 			} else {
 				vocabIndex += 1
 				updateVocab()
