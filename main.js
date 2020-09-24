@@ -5,12 +5,14 @@ const poleVocab = ["competition","frightened","comfort","zone","attend","tournam
 const catVocab = ["morning","grooming","startled","servants","nerve","breakfast","consuming","intake","regular","massage","forget","remind","long","reminder","swipe","claws","parents","kitty"]
 const halloweenVocab = ["spooky","chilled","summon","courage","muster","somersault","haunted","mansion","bragging","actually","goosebumps","towards","nauseous","stumbled","backwards","coward","puking","shrugged","house","candies"]
 const catTwoVocab = ["humans","ignored","irk","reaction","screaming","typically","tonight","mama","master","rummage","trashcan","blame","fail","apparently","asleep","executed","interrogate","contact","effective","suspicions","revenge"]
+const cat3Vocab = ["constantly","kitten","nutrition","vitamins","shiny","energy","hunt","natural","predator","destined","retain",'nightly',"mice","designated","prey","tummy","rumbling","chow","gourmet","chef"]
+const rollerVocab = ["adrenaline","veins","breath","throat","rammed","lungs","scream","oxygen","amusement","intestines","shakily","vowed","rollercoasters","peer","pressure"]
 
 
-const vocabulary = [zooVocab,campVocab,poleVocab,catVocab,halloweenVocab,catTwoVocab]
-const stories = ["zooStory", "campStory","poleStory","catStory","halloweenStory","catStoryTwo"]
-const vocabularyString = ["zooVocab", "campVocab","poleVocab","catVocab","halloweenVocab","catTwoVocab"]
-const storyTitle = ["A day at the zoo","Camping Trip","Exploration of Pole Dancing","Meowy's Diary Page 1","Halloween Braggart","Meowy's Diary Page 2"]
+const vocabulary = [zooVocab,campVocab,poleVocab,catVocab,halloweenVocab,catTwoVocab,cat3Vocab,rollerVocab]
+const stories = ["zooStory", "campStory","poleStory","catStory","halloweenStory","catStoryTwo","catStory3","rollerStory"]
+const vocabularyString = ["zooVocab", "campVocab","poleVocab","catVocab","halloweenVocab","catTwoVocab","cat3Vocab","rollerVocab"]
+const storyTitle = ["A day at the zoo","Camping Trip","Exploration of Pole Dancing","Meowy's Diary Page 1","Halloween Braggart","Meowy's Diary Page 2","Meowy's Diary Page 3","Horrifying loops, dips and turns"]
 
 
 var counter = 5
