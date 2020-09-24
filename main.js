@@ -4,10 +4,13 @@ const campVocab = ["thunderstorm","fresh","clear","travel","campsite","vehicle",
 const poleVocab = ["competition","frightened","comfort","zone","attend","tournament","myriad","sculpted","greek","goddesses","starstruck","giddy","excitement","satisfied"]
 const catVocab = ["morning","grooming","startled","servants","nerve","breakfast","consuming","intake","regular","massage","forget","remind","long","reminder","swipe","claws","parents","kitty"]
 const halloweenVocab = ["spooky","chilled","summon","courage","muster","somersault","haunted","mansion","bragging","actually","goosebumps","towards","nauseous","stumbled","backwards","coward","puking","shrugged","house","candies"]
+const catTwoVocab = ["humans","ignored","irk","reaction","screaming","typically","tonight","mama","master","rummage","trashcan","blame","fail","apparently","asleep","executed","interrogate","contact","effective","suspicions","revenge"]
 
-const vocabulary = [zooVocab,campVocab,poleVocab,catVocab,halloweenVocab]
-const stories = ["zooStory", "campStory","poleStory","catStory","halloweenStory"]
-const vocabularyString = ["zooVocab", "campVocab","poleVocab","catVocab","halloweenVocab"]
+
+const vocabulary = [zooVocab,campVocab,poleVocab,catVocab,halloweenVocab,catTwoVocab]
+const stories = ["zooStory", "campStory","poleStory","catStory","halloweenStory","catStoryTwo"]
+const vocabularyString = ["zooVocab", "campVocab","poleVocab","catVocab","halloweenVocab","catTwoVocab"]
+const storyTitle = ["A day at the zoo","Camping Trip","Exploration of Pole Dancing","Meowy's Diary Page 1","Halloween Braggart","Meowy's Diary Page 2"]
 
 
 var counter = 5
@@ -29,6 +32,7 @@ window.onload = function() {
 	counts.innerHTML = `${counter} Strikes`
 	vocabs.innerHTML = vocabulary[storyIndex][vocabIndex]
 	showTime()
+	document.getElementById("storyTitle").innerHTML = `Story ${storyIndex + 1}: ${storyTitle[storyIndex]}`
 
 	hide(vocabulary[storyIndex])
 
@@ -104,6 +108,9 @@ function refresh() {
 	document.getElementById("score").hidden = true
 	document.getElementById("oops").hidden = true
 	document.getElementById("mistakes").hidden = true
+	document.getElementById("storyTitle").innerHTML = `Story ${storyIndex + 1}: ${storyTitle[storyIndex]}`
+	document.getElementById("goBack").hidden = true
+	document.getElementById("goBackEnd").hidden = true
 }
 
 function next() {
@@ -130,8 +137,6 @@ function firstPage() {
 	document.getElementById(stories[0]).hidden = false
 	storyIndex = 0
 	refresh()
-	document.getElementById("goBack").hidden = true
-	document.getElementById("goBackEnd").hidden = true
 }
 
 function checkInputValue(inputElement) {
@@ -144,7 +149,7 @@ function checkInputValue(inputElement) {
 			mistakes.push(textInput)
 		}else if (textInput === vocabulary[storyIndex][vocabIndex]) {
 			unhide(String(vocabulary[storyIndex][vocabIndex]))
-			if (textInput === vocabulary[storyIndex][vocabulary[storyIndex].length - 1]) {
+			if (textInput === vocabulary[storyIndex][vocabulary[storyIndex].length - 1]) { //Finished Story
 				stopCount()
 				document.getElementById("myInput").hidden = true 
 				document.getElementById("enter").hidden = false 

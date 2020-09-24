@@ -10,7 +10,12 @@ p.timer {
 
 header {
 	text-align: center;
-	font-size: 50px;
+	font-size: 40px;
+}
+
+.storyName {
+  background-color: lightblue;
+  text-decoration: underline;
 }
 
 input.typing {
@@ -28,7 +33,7 @@ input.enter {
 	width: 10%;
 	font-size: 20px;
 	right: 580px;
-	position: fixed;
+	position: absolute;
 	top: 500px;
 	height: 30px;
 }
@@ -38,7 +43,7 @@ input.goBack {
 	width: 10%;
 	font-size: 20px;
 	right: 450px;
-	position: fixed;
+	position: absolute;
 	top: 500px;
 	height: 30px;
 }
@@ -59,7 +64,7 @@ input.restart {
 	width: 10%;
 	font-size: 20px;
 	right: 700px;
-	position: fixed;
+	position: absolute;
 	top: 500px;
 	height: 30px;
 }
