@@ -33,6 +33,26 @@ input.enter {
 	height: 30px;
 }
 
+input.goBack {
+	text-align: center;
+	width: 10%;
+	font-size: 20px;
+	right: 450px;
+	position: fixed;
+	top: 500px;
+	height: 30px;
+}
+
+input.goBackEnd {
+	text-align: center;
+	width: 10%;
+	font-size: 20px;
+	right: 580px;
+	position: fixed;
+	top: 550px;
+	height: 30px;
+}
+
 
 input.restart {
 	text-align: center;

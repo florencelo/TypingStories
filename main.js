@@ -3,10 +3,11 @@ const zooVocab = ["beautiful", "chirping", "brightly", "zoo", "numerous", "giraf
 const campVocab = ["thunderstorm","fresh","clear","travel","campsite","vehicle","assigned","firewood","campfire","barbeque","supper","pitched","respective"]
 const poleVocab = ["competition","frightened","comfort","zone","attend","tournament","myriad","sculpted","greek","goddesses","starstruck","giddy","excitement","satisfied"]
 const catVocab = ["morning","grooming","startled","servants","nerve","breakfast","consuming","intake","regular","massage","forget","remind","long","reminder","swipe","claws","parents","kitty"]
+const halloweenVocab = ["spooky","chilled","summon","courage","muster","somersault","haunted","mansion","bragging","actually","goosebumps","towards","nauseous","stumbled","backwards","coward","puking","shrugged","house","candies"]
 
-const vocabulary = [zooVocab,campVocab,poleVocab,catVocab]
-const stories = ["zooStory", "campStory","poleStory","catStory"]
-const vocabularyString = ["zooVocab", "campVocab","poleVocab","catVocab"]
+const vocabulary = [zooVocab,campVocab,poleVocab,catVocab,halloweenVocab]
+const stories = ["zooStory", "campStory","poleStory","catStory","halloweenStory"]
+const vocabularyString = ["zooVocab", "campVocab","poleVocab","catVocab","halloweenVocab"]
 
 
 var counter = 5
@@ -105,7 +106,7 @@ function refresh() {
 	document.getElementById("mistakes").hidden = true
 }
 
-function Next() {
+function next() {
 	storyIndex += 1
 	document.getElementById(stories[storyIndex]).hidden = false
 	document.getElementById(stories[storyIndex - 1]).hidden = true
@@ -124,6 +125,15 @@ function showMistakes() {
 	document.getElementById("mistakes").innerHTML = `Your typos were: ${mistakes}`
 }
 
+function firstPage() {
+	document.getElementById(stories[storyIndex]).hidden = true
+	document.getElementById(stories[0]).hidden = false
+	storyIndex = 0
+	refresh()
+	document.getElementById("goBack").hidden = true
+	document.getElementById("goBackEnd").hidden = true
+}
+
 function checkInputValue(inputElement) {
 	return function() {
 		startCount()
@@ -139,7 +149,14 @@ function checkInputValue(inputElement) {
 				document.getElementById("myInput").hidden = true 
 				document.getElementById("enter").hidden = false 
 				showScore()
-				document.getElementById("oops").hidden = false
+				if (counter < 5){
+					document.getElementById("oops").hidden = false
+				}
+					if (storyIndex === stories.length - 1) {
+					document.getElementById("goBackEnd").hidden = false 
+					document.getElementById("giveUp").hidden = true 	
+					document.getElementById("enter").hidden = true 
+				}
 			} else {
 				vocabIndex += 1
 				updateVocab()
@@ -150,9 +167,17 @@ function checkInputValue(inputElement) {
 			document.getElementById("myInput").hidden = true
 			document.getElementById("restart").hidden = false
 			document.getElementById("giveUp").hidden = false
+
+			if (storyIndex === stories.length - 1) {
+				document.getElementById("goBack").hidden = false 
+				document.getElementById("giveUp").hidden = true 	
+			}
 		}
 	}
 }
+
+
+
 
 
 
