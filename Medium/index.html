@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Type and Drag for Cuties</title>
+
+    <link href="style.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <script src="main.js"></script>
+    <header> <b> Medium Level </b></header>
+
+    <div id="counter" style="position: fixed; top: 10px; right: 50px; font-size: 30px"> </div>
+    <div id="timer" style="position: fixed; top: 15px; left: 40px; font-size: 15px"> </div>
+    <div id="storyTitle" style="position: absolute; top: 70px; left: 40px; font-size: 25px" class="storyName"></div>
+
+    <p id="hikeStory" style ="margin: 50px;"> There is a <span id="magical" class="word"> magical </span> <span id="waterfall" class="word"> waterfall </span> in the <span id="mountains" class="word"> mountains </span> of Utah. The <span id="challenge" class="word"> challenge </span> is to <span id="climb" class="word"> climb </span> 350 feet into the air. Those who reach the top can <span id="witness" class="word"> witness </span> the <span id="glory" class="word"> glory </span> of <span id="nature" class="word"> nature </span>. Through the <span id="sweat" class="word"> sweat </span> and <span id="muscle" class="word"> muscle </span> <span id="soreness" class="word"> soreness </span>, you can breath in the <span id="crisp" class="word"> crisp </span> air. You can <span id="bask" class="word"> bask </span> in the <span id="satisfaction" class="word"> satisfaction </span> as you look at the magical waterfall. </p>
+
+
+
+  	<p id="Vocab" style="text-align: center; font-size: 40px;"></p>
+    <p hidden id="wordBox" style="text-align: center; font-size: 20px;"><u>Word List: </u></p>
+
+
+  	<input id="myInput" type="text" class="typing"> 
+  	<p hidden id="score" style="text-align: center; font-size: 50px"></p>
+
+  	<input hidden type="button" id="enter" name="enter" class="enter" value="Next Story" onclick="next()">
+  	<input hidden type="button" id="restart" name="restart" class="restart" value="Restart Story" onclick="refresh()">
+  	<input hidden type="button" id="giveUp" name="giveUp" class="giveUp" value="Next Story" onclick="next()">
+  	<input hidden type="button" id="goBack" name="goBack" class="goBack" value="First Story" onclick="firstPage()">
+  	<input hidden type="button" id="goBackEnd" name="goBackEnd" class="goBackEnd" value="First Story" onclick="firstPage()">
+
+
+  	<input hidden type="button" id="oops" name="oops" class="oops" value="Show Mistakes" onclick="showMistakes()">
+  	<p hidden id="mistakes" style="text-align: left; font-size: 20px;"> </p>
+
+
+  </body>
+</html>
