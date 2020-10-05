@@ -76,6 +76,16 @@ input.restart {
 	height: 30px;
 }
 
+/*input.restartOrder {
+	text-align: center;
+	width: 10%;
+	font-size: 20px;
+	right: 700px;
+	position: absolute;
+	top: 500px;
+	height: 30px;
+}*/
+
 input.giveUp {
 	text-align: center;
 	width: 10%;

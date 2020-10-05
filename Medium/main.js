@@ -1,13 +1,16 @@
 
 const hikeVocab = ["magical","waterfall","mountains","challenge","climb","witness","glory","nature","sweat","muscle","soreness","crisp","bask","satisfaction"]
-
-const vocabulary = [hikeVocab]
-const stories = ["hikeStory"]
-const vocabularyString = ["hikeVocab"]
-const storyTitle = ["A Rewarding Hike"]
+const detectiveVocab = ["eluded","detective","force","encounter","methodical","disappearing","sharpened","deductive","prowess","trail","crumbs","startled","incredulously"]
+// const Vocab = [""]
 
 
-var counter = 5
+const vocabulary = [hikeVocab,detectiveVocab]
+const stories = ["hikeStory","detectiveStory"]
+const vocabularyString = ["hikeVocab","detectiveVocab"]
+const storyTitle = ["A Rewarding Hike","Detective Meowy"]
+
+
+var counter = 10
 var vocabIndex = 0
 var storyIndex = 0
 var sec = 0
@@ -18,24 +21,15 @@ var score = 100
 var mistakes = []
 var shuffledVocab = shuffle(vocabulary[storyIndex])
 
-
 window.onload = function() {
 
 	let counts = document.getElementById("counter")
 	let vocabs = document.getElementById("Vocab")
 
-	let vocabing = document.getElementById(String(stories[storyIndex])); 
-	let specialWords = vocabing.getElementsByTagName('span');
-
-	for (let specialWord of specialWords) {
-  		specialWord.ondragover = function(){allowDrop(event)}
-  		specialWord.ondrop = function(){drop(event)} 
-  		specialWord.style.color = function(){return blue}
-	}
+	allowSpan()
 
 	counts.innerHTML = `${counter} Strikes`
 	vocabs.innerHTML = vocabulary[storyIndex][vocabIndex]
-
 
 	showTime()
 	document.getElementById("storyTitle").innerHTML = `Story ${storyIndex + 1}: ${storyTitle[storyIndex]}`
@@ -47,15 +41,8 @@ window.onload = function() {
 	myInput.addEventListener("input", checkInputValue(myInput))
 
 
-	test()
 }
 
-function test() {
-	for (let vocab of hikeVocab) {
-		addTo("wordBox", vocab, "div")
-	}
-	document.getElementById("wordBox").hidden = false
-}
 
 function unhide(id) {
 	document.getElementById(id).innerHTML = id
@@ -76,9 +63,17 @@ function updateCount() {
 	document.getElementById("myInput").value = ""
 }
 
-function check(){
+function allowSpan(){
+	let vocabing = document.getElementById(String(stories[storyIndex])); 
+	let specialWords = vocabing.getElementsByTagName('span');
 
+	for (let specialWord of specialWords) {
+  		specialWord.ondragover = function(){allowDrop(event)}
+  		specialWord.ondrop = function(){drop(event)} 
+  		specialWord.style.color = function(){return blue}
+	}
 }
+
 
 function addTo(id, word, tagId) {
 	var tag = document.createElement(tagId);
@@ -86,6 +81,7 @@ function addTo(id, word, tagId) {
    	tag.appendChild(text);
    	tag.id = `draggable-${word}`
    	tag.draggable = true
+   	tag.style.display = "block"
    	tag.ondragstart = function(){drag(event)}
    	var element = document.getElementById(id)
    	element.appendChild(tag)
@@ -93,7 +89,6 @@ function addTo(id, word, tagId) {
 
 function allowDrop(ev) {
   	ev.preventDefault();
-  	ev.target.style.color = "blue"
 }
 
 function drag(ev) {
@@ -103,8 +98,29 @@ function drag(ev) {
 function drop(ev) {
   	ev.preventDefault()
  	var data = ev.dataTransfer.getData("text")
- 	ev.target.parentNode.replaceChild(document.getElementById(data), ev.target)
+ 	if (data === `draggable-${ev.target.id}`){
+ 		// ev.target.parentNode.replaceChild(document.getElementById(data), ev.target)
+ 		unhide(ev.target.id)
+ 		document.getElementById(data).remove()
+ 		// document.getElementById(data).style.display = "inline"
+ 		// document.getElementById(data).style.color = "blue"
+ 		check()
+ 	}else {
+ 		counter -= 1
+ 		updateCount()
+
+ 		if (counter === 0) {
+			stopCount()
+			document.getElementById("myInput").hidden = true
+			document.getElementById("restart").hidden = false
+			document.getElementById("giveUp").hidden = false
+			document.getElementById("wordBox").hidden = true 
+		}	
+ 	}
+
+ 	
 }
+
 
 function shuffle(a) {
     for (let i = a.length - 1; i > 0; i--) {
@@ -148,7 +164,8 @@ function stopCount() {
 
 function refresh() {
 	hide(vocabulary[storyIndex])
-	counter = 5
+	shuffle(vocabulary[storyIndex])
+	counter = 10
 	vocabIndex = 0
 	score = 100
 	mistakes.length = 0
@@ -158,24 +175,29 @@ function refresh() {
 	document.getElementById("giveUp").hidden = true
 	document.getElementById("restart").hidden = true
 	document.getElementById("myInput").hidden = false
+	document.getElementById("Vocab").hidden = false
 	document.getElementById("score").hidden = true
 	document.getElementById("oops").hidden = true
 	document.getElementById("mistakes").hidden = true
 	document.getElementById("storyTitle").innerHTML = `Story ${storyIndex + 1}: ${storyTitle[storyIndex]}`
 	document.getElementById("goBack").hidden = true
 	document.getElementById("goBackEnd").hidden = true
+	document.getElementById("wordBox").hidden = true
+	allowSpan()
 }
+
 
 function next() {
 	storyIndex += 1
 	document.getElementById(stories[storyIndex]).hidden = false
 	document.getElementById(stories[storyIndex - 1]).hidden = true
 	document.getElementById("enter").hidden = true
+	document.getElementById("wordBox").hidden = true
 	refresh()
 }
 
 function showScore() {
-	var finalscore = score - ((min*60) + sec - 1) - ((5-counter)*5)
+	var finalscore = score - Math.floor(((min*60) + sec - 1)/5) - ((10-counter)*5)
 	document.getElementById("score").hidden = false
 	document.getElementById("score").innerHTML = `Your Score is: ${finalscore}!`
 }
@@ -192,6 +214,29 @@ function firstPage() {
 	refresh()
 }
 
+function check() {
+	if (document.getElementById("wordBox").getElementsByTagName("span").length === 0) { // If empty, second round is done
+		stopCount()
+		document.getElementById("enter").hidden = false
+		showScore()
+
+		if (counter < 10) {
+			document.getElementById("oops").hidden = false
+		}
+
+		if (storyIndex === stories.length - 1) {
+			document.getElementById("goBackEnd").hidden = false 
+			document.getElementById("giveUp").hidden = true 	
+			document.getElementById("enter").hidden = true 
+		}
+
+		if (storyIndex === stories.length - 1) {
+				document.getElementById("goBack").hidden = false 
+				document.getElementById("giveUp").hidden = true 	
+		}
+	}
+}
+
 function checkInputValue(inputElement) {
 	return function() {
 		startCount()
@@ -201,29 +246,12 @@ function checkInputValue(inputElement) {
 			updateCount()
 			mistakes.push(textInput)
 		}else if (textInput === vocabulary[storyIndex][vocabIndex]) {
-			// unhide(String(vocabulary[storyIndex][vocabIndex]))
-			addTo("wordBox",vocabulary[storyIndex][vocabIndex],"div")
+			addTo("wordBox",vocabulary[storyIndex][vocabIndex],"span")
 			if (textInput === vocabulary[storyIndex][vocabulary[storyIndex].length - 1]) { //Finished Story
 				document.getElementById("Vocab").hidden = true 
 				document.getElementById("myInput").hidden = true 
 				document.getElementById("enter").hidden = true 
-				document.getElementById("wordBox").hidden = false
-				counter = 5
-				stopCount()
-				if (counter < 5){
-					document.getElementById("oops").hidden = false
-				}
-				if (storyIndex === stories.length - 1) {
-					// document.getElementById("goBackEnd").hidden = false 
-					document.getElementById("giveUp").hidden = true 	
-					document.getElementById("enter").hidden = true 
-				}
-				// if(element){
-					// document.getElementById("check").hidden = false
-					// 	stopCount()
-					// 	document.getElementById("enter").hidden = false
-					// 	showScore()
-				// }
+				document.getElementById("wordBox").hidden = false				
 			} else {
 				vocabIndex += 1
 				updateVocab()
