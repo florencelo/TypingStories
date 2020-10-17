@@ -1,6 +1,6 @@
 p {
 	color: black;
-	font-size: 30px;
+	font-size: 25px;
 }
 
 p.timer {
@@ -8,12 +8,12 @@ p.timer {
 	top: 500px
 }
 
-p.wordBox {
+/*p.wordBox {
 	width: 350px;
 	height: 70px;
 	padding: 10px;
 	border: 1px solid #aaaaaa;
-}
+}*/
 
 header {
 	text-align: center;

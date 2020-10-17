@@ -1,13 +1,14 @@
 
-const hikeVocab = ["magical","waterfall","mountains","challenge","climb","witness","glory","nature","sweat","muscle","soreness","crisp","bask","satisfaction"]
-const detectiveVocab = ["eluded","detective","force","encounter","methodical","disappearing","sharpened","deductive","prowess","trail","crumbs","startled","incredulously"]
-const treeVocab = ["incredible","accomplishment","pinnacle","meaningful","section","flicker","tougher","ground","concluded","glance","glimpse","stretched","loving"]
+const imposterVocab = ["mundane","maintenance","surrounded","bleak","oxygen","sufficient","psychological","trauma","illness","hallucinate","murdering","crewmates","weapons","shoot","literally","snap","deem","living","sabotage","murder","manage","everybody","tamper","trick","know","murderer","midst","recourse","space"]
+const unrequitedVocab = ["treasures","fortunes","undergarments","hefty","gourmet","cuisines","consumption","requests","attention","necessity","brush","tired","snuggle","smacks","cuddle","whines","wriggles","strive","obtain","endearment","repudiates","classify","toxic","relationship","undying","superstar","priceless","diamond"]
+const bakingVocab = ["allege","infatuation","assuage","induced","straightforward","instructions","simulate","perk","scrumptious","research","internet","guidelines","tend","formula","measurements","substituting","meticulous","freedom","customizing","ingredients","relaxation","pleas","moderate","frenzy","comply","encounter"]
+const overcookedVocab = ["sweltering","kitchen","greeted","specializes","restaurant","assists","particularly","specialty","business","menu","changes","serve","maximum","limit","customers","establishment","seasonal","mooncakes","regular","hamburgers","experience","mishaps","overcooking","vegetables","beeping"]
 
 
-const vocabulary = [hikeVocab,detectiveVocab,treeVocab]
-const stories = ["hikeStory","detectiveStory","treeStory"]
-const vocabularyString = ["hikeVocab","detectiveVocab","treeVocab"]
-const storyTitle = ["A Rewarding Hike","Detective Meowy","Climbing to the Top"]
+const vocabulary = [imposterVocab,unrequitedVocab,bakingVocab,overcookedVocab]
+const stories = ["imposterStory","unrequitedStory","bakingStory","overcookedStory"]
+const vocabularyString = ["imposterVocab","unrequitedVocab","bakingVocab","overcookedVocab"]
+const storyTitle = ["Diary of a Lonely Killer","Unrequited Love","Obsession Over Creating Baked Goods","The Most Intense Cooking Competition"]
 
 
 var counter = 10
@@ -177,11 +178,11 @@ function refresh() {
 	document.getElementById("score").hidden = true
 	document.getElementById("oops").hidden = true
 	document.getElementById("mistakes").hidden = true
-	document.getElementById("storyTitle").innerHTML = `Story ${storyIndex + 1}: ${storyTitle[storyIndex]}`
 	document.getElementById("goBack").hidden = true
 	document.getElementById("goBackEnd").hidden = true
-	document.getElementById("wordBox").innerHTML = "<div> Word List: </div>"
 	document.getElementById("wordBox").hidden = true
+	document.getElementById("wordBox").innerHTML = "<div> Word List: </div>"
+	document.getElementById("storyTitle").innerHTML = `Story ${storyIndex + 1}: ${storyTitle[storyIndex]}`
 	allowSpan()
 }
 
@@ -196,7 +197,7 @@ function next() {
 }
 
 function showScore() {
-	var finalscore = score - Math.floor(((min*60) + sec - 1)/5) - ((10-counter)*5)
+	var finalscore = score - Math.floor(((min*60) + sec - 1)/4) - ((10-counter)*5)
 	document.getElementById("score").hidden = false
 	document.getElementById("score").innerHTML = `Your Score is: ${finalscore}!`
 }

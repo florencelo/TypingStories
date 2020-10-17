@@ -1,6 +1,6 @@
 
 const zooVocab = ["beautiful", "chirping", "brightly", "zoo", "numerous", "giraffes", "tigers", "lions", "penguins", "flamingos", "intriguing", "memorable"]
-const campVocab = ["thunderstorm","fresh","clear","travel","campsite","vehicle","assigned","firewood","campfire","barbeque","supper","pitched","respective"]
+const campVocab = ["thunderstorm","fresh","clear","travel","campsite","vehicle","assigned","firewood","campfire","barbecue","supper","pitched","respective"]
 const poleVocab = ["competition","frightened","comfort","zone","attend","tournament","myriad","sculpted","greek","goddesses","starstruck","giddy","excitement","satisfied"]
 const catVocab = ["morning","grooming","startled","servants","nerve","breakfast","consuming","intake","regular","massage","forget","remind","long","reminder","swipe","claws","parents","kitty"]
 const halloweenVocab = ["spooky","chilled","summon","courage","muster","somersault","haunted","mansion","bragging","actually","goosebumps","towards","nauseous","stumbled","backwards","coward","puking","shrugged","house","candies"]
