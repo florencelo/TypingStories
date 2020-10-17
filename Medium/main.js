@@ -2,12 +2,13 @@
 const hikeVocab = ["magical","waterfall","mountains","challenge","climb","witness","glory","nature","sweat","muscle","soreness","crisp","bask","satisfaction"]
 const detectiveVocab = ["eluded","detective","force","encounter","methodical","disappearing","sharpened","deductive","prowess","trail","crumbs","startled","incredulously"]
 const treeVocab = ["incredible","accomplishment","pinnacle","meaningful","section","flicker","tougher","ground","concluded","glance","glimpse","stretched","loving"]
+const puzzleVocab = ["plethora","jigsaw","imperceptible","compelled","individual","recognize","misplaced","confidence","anew","confident","capsize","miserable","naturally"]
 
 
-const vocabulary = [hikeVocab,detectiveVocab,treeVocab]
-const stories = ["hikeStory","detectiveStory","treeStory"]
-const vocabularyString = ["hikeVocab","detectiveVocab","treeVocab"]
-const storyTitle = ["A Rewarding Hike","Detective Meowy","Climbing to the Top"]
+const vocabulary = [hikeVocab,detectiveVocab,treeVocab,puzzleVocab]
+const stories = ["hikeStory","detectiveStory","treeStory","puzzleStory"]
+const vocabularyString = ["hikeVocab","detectiveVocab","treeVocab","puzzleVocab"]
+const storyTitle = ["A Rewarding Hike","Detective Meowy","Climbing To The Top","Let The Pieces Fall Into Place"]
 
 
 var counter = 10
