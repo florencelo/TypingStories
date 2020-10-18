@@ -4,12 +4,12 @@ p {
 }
 
 a {
-	font-size: 40px;
+	font-size: 20px;
 	text-align: center;
 }
 
 div {
-	padding: 15px;
+	padding: 30px;
 }
 
 body {
@@ -17,5 +17,5 @@ body {
 }
 
 header {
-	font-size: 55px;
+	font-size: 70px;
 }
